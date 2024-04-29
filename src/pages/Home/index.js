@@ -2,7 +2,6 @@ import Menu from "../../containers/Menu";
 import ServiceCard from "../../components/ServiceCard";
 import EventCard from "../../components/EventCard";
 import PeopleCard from "../../components/PeopleCard";
-
 import "./style.scss";
 import EventList from "../../containers/Events";
 import Slider from "../../containers/Slider";
@@ -15,8 +14,8 @@ import { useData } from "../../contexts/DataContext";
 const Page = () => {
   const {data} = useData()
   // il est nécessaire de classer les éléments pour récupérer la dernière prestation
-  const last = data?.events.sort((evtA, evtB) =>
-    new Date(evtB.date) - new Date(evtA.date)
+  const lastEvent = data?.events.sort((eventA, eventB) =>
+    new Date(eventB.date) - new Date(eventA.date)
   )[0];
   return <>
     <header>
@@ -117,16 +116,17 @@ const Page = () => {
         </Modal>
       </div>
     </main>
-    <footer className="row">
+
+    <footer className="row" data-testid="footer">
       <div className="col presta">
         <h3>Notre derniére prestation</h3>
-        {/* on conditionne le composant eventcard avec last pour supprimer les erreurs console undefined */}
-        {last && (<EventCard
-          imageSrc={last?.cover}
-          title={last?.title}
-          date={new Date(last?.date)}
+        {/* on conditionne le composant eventcard avec lastEvent pour supprimer les erreurs console undefined */}
+        {lastEvent && (<EventCard
+          imageSrc={lastEvent?.cover}
+          title={lastEvent?.title}
+          date={new Date(lastEvent?.date)}
           small
-          label={last?.type}
+          label={lastEvent?.type}
           data-testid="lastEvent"
         />)}
       </div>

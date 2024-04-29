@@ -9,8 +9,8 @@ const Slider = () => {
   const [index, setIndex] = useState(0);
   const byDateDesc = data?.focus.sort((evtA, evtB) =>
 
-  // opérateur logique poistionner en ordre croissant alors qu'il doit être en ordere décroissant  
-    new Date(evtA.date) < new Date(evtB.date) ? -1 : 1
+  // opérateur logique poistionner en ordre croissant alors qu'il doit être en ordre décroissant  
+    new Date(evtA.date) > new Date(evtB.date) ? -1 : 1
   );
   const nextCard = () => {
     setTimeout(
@@ -34,7 +34,7 @@ const Slider = () => {
               index === idx ? "display" : "hide"
             }`}
           >
-            {/* Attribut alt modifié pour avoir les renseignements correspondants à l'image */}
+            {/* Attribut alt modifié pour avoir les données correspondants à l'image */}
             <img src={event.cover} alt={event.title} />
             <div className="SlideCard__descriptionContainer">
               <div className="SlideCard__description">

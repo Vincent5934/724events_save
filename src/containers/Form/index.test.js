@@ -22,8 +22,8 @@ describe("When Events is created", () => {
         })
       );
       await screen.findByText("En cours");
-      // AJOUT FONCTION WAITFOR AFIN DE LAISSER LA FONCTION ASYNC FAIRE SON ROLE 
-      // ET EVITER LE MESSAGE D'ERREUR
+      // Ajout de la fonction waitFor pour laisser le temps à la requête de s'exécuter 
+      // et eviter le message d'erreur
       await waitFor(() => screen.findByText("Envoyer"), {timeout:2000});
       expect(onSuccess).toHaveBeenCalled();
     });

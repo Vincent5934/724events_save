@@ -21,39 +21,37 @@ describe("When Form is created", () => {
         })
       );
       await screen.findByText("En cours");
-
-      // On attend que le "Message envoyé" apparaisse
-      await waitFor(() => screen.findByText("Message envoyé !"), {timeout:2000} );
+      // Ajout de la propriété waitFor pour attendre que le "Message envoyé" apparaisse
+      await waitFor(() => screen.findByText("Message envoyé !"), {timeout:2000});
     });
   });
 
 });
 
-
+ /* Test d'un événement présent dans la liste */
 describe("When a page is created", () => {
   it("a list of events is displayed", () => {
     render(< Home />)
     expect(screen.getByTestId("listEvents")).toBeInTheDocument()
-    /* Test d'un événement présent dans la liste */
-    waitFor(() => {
-      expect(screen.getByText("#productCON")).toBeInTheDocument()
+    waitFor(() => {expect(screen.getByText("#productCON")).toBeInTheDocument()
     })
   })
 
-
+/* Test de personnes dans la liste */
   it("a list a people is displayed", () => {
     render(< Home />)
     expect(screen.getByTestId("listOfPeople")).toBeInTheDocument()
-    /* Test de personnes dans la liste */
     expect(screen.getByText('Samira')).toBeInTheDocument()
     expect(screen.getByText('Alice')).toBeInTheDocument()
   })
 
-
-
+  // Test d'un élément dans le footer
   it("a footer is displayed", () => {
-    // to implement
+    render(< Home />)
+    expect(screen.getByTestId("footer")).toBeInTheDocument()
+    expect(screen.getByText("45 avenue de la République, 75000 Paris")).toBeInTheDocument()
   })
+
   it("an event card, with the last event, is displayed", () => {
     // to implement
   })

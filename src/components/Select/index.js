@@ -16,7 +16,8 @@ const Select = ({
   const [value, setValue] = useState();
   const [collapsed, setCollapsed] = useState(true);
   const changeValue = (newValue) => {
-    // il n'y avait pas de propriété à la commande "onChange" le filtre ne fonctionnait donc pas.
+    // il n'y avait pas de propriété à la commande "onChange" le filtre ne fonctionnait 
+    // donc pas et ne pouvait pas afficher les valeurs coresspondante
     // nous avons ajouté "newValue" pour que cela fonctionne
     onChange(newValue);
     setValue(newValue);
