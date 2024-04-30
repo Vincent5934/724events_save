@@ -52,7 +52,5 @@ describe("When a page is created", () => {
     expect(screen.getByText("45 avenue de la République, 75000 Paris")).toBeInTheDocument()
   })
 
-  it("an event card, with the last event, is displayed", () => {
-    // to implement
-  })
+ 
 });
